@@ -19,7 +19,7 @@ function Destination({
           </p>
         </div>
         <div className="flex gap-4 my-6">
-          <Button title="Book now" />
+          <Button title="Book now" className={"text-white"} />
           <Button title="Read more" outline={true} />
         </div>
       </div>
