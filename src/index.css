@@ -43,22 +43,23 @@ body {
 }
 
 .overlay {
-  background: linear-gradient(
-    to left,
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.7) 50%
-  );
+  background: linear-gradient(to left,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.7) 50%);
 }
 
 .overlay--2 {
   bottom: 0;
   background: white;
   height: 100px;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.4),
-    rgba(0, 0, 0, 0.8)
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.8));
   filter: blur(40px);
-  /* clear: #25450b; */
+  clear: #00000031;
+}
+
+
+.swiper-slide {
+  box-shadow: none !important;
 }

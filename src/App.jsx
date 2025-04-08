@@ -5,8 +5,20 @@ import Tours from "./components/landing/Tours";
 import CTA from "./components/landing/CTA";
 import Footer from "./components/landing/Footer";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+import useWindowSize from "./hooks/useWindowSize";
+
 function App() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const { width } = useWindowSize();
+
   return (
     <main className="">
       <Hero />
@@ -31,9 +43,7 @@ function App() {
 
           <div className="flex gap-4 items-center">
             <div
-              className={`relative w-10 ${
-                activeIndex > 0 ? "cursor-pointer" : "cursor-not-allowed"
-              }`}
+              className={`prev relative w-10 cursor-pointer`}
               // onClick={goToPrevSlide}
             >
               <span>
@@ -46,7 +56,7 @@ function App() {
                 >
                   <path
                     d="M40.2072 14.219C38.7578 8.04951 33.9386 3.23355 27.7681 1.78834C23.3119 0.744621 18.6746 0.746176 14.219 1.79288C8.04955 3.24223 3.23359 8.06142 1.78837 14.2319C0.74466 18.6881 0.746214 23.3254 1.79292 27.781C3.24227 33.9505 8.06145 38.7665 14.2319 40.2117C18.6882 41.2554 23.3255 41.2538 27.781 40.2071C33.9505 38.7578 38.7665 33.9386 40.2117 27.7681C41.2554 23.3119 41.2539 18.6746 40.2072 14.219Z"
-                    className="stroke-white"
+                    className="stroke-primary"
                     strokeWidth="1.57242"
                   />
                 </svg>
@@ -62,7 +72,7 @@ function App() {
                 >
                   <path
                     d="M1.2247 6.99705L16.775 7.00226M16.775 7.00226L11.2232 1.44671M16.775 7.00226L11.2195 12.5541"
-                    className={`stroke-white`}
+                    className={`stroke-primary`}
                     strokeWidth="1.57242"
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -71,7 +81,7 @@ function App() {
               </span>
             </div>
             <div
-              className={` relative w-10`}
+              className={`next relative w-10 cursor-pointer`}
               // onClick={goToNextSlide}
             >
               <span>
@@ -109,6 +119,376 @@ function App() {
             </div>
           </div>
         </div>
+
+        {/* Swiper */}
+        <div className="swiper">
+          <Swiper
+            effect="coverflow"
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={width > 780 ? 3 : "auto"}
+            loop={true}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 100,
+              modifier: 3,
+              slideShadows: true,
+            }}
+            pagination={{ el: "pagination", clickable: true }}
+            navigation={{
+              nextEl: ".next",
+              prevEl: ".prev",
+              clickable: true,
+            }}
+            modules={[EffectCoverflow, Pagination, Navigation]}
+            className="swiper-slide shadow-none place-items-center my-10 flex justify-center items-center"
+          >
+            {/* Slider 1 */}
+            <SwiperSlide className=" place-items-center shadow-none">
+              {({ isActive }) => (
+                <div
+                  className={`h-[350px] w-[500px] md:w-[700px] md:h-[450px]  overflow-hidden relative bg-secondary after:absolute after:w-full after:h-[80%] after:bg-gradient-to-t ${
+                    !isActive && "after:hidden"
+                  }  after:from-[#000] after:to-[#00000020] after:blur  after:-bottom-5`}
+                >
+                  {isActive && (
+                    <img
+                      src="https://images.unsplash.com/photo-1645045454110-11c78c8d6efd?q=80&w=1609&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      className="w-full h-full object-cover"
+                      alt=""
+                    />
+                  )}
+                  {!isActive && (
+                    <div className="absolute top-4 left-4 h-16 w-16 flex justify-center items-center border-2 border-gray-300 rounded-full">
+                      <p className="text-4xl text-gray-300 font-medium">01</p>
+                    </div>
+                  )}
+                  <div className="absolute bottom-8 gap-2 flex justify-between left-8  z-[999]">
+                    <div className="w-full">
+                      <p className="text-base bg-primary w-fit px-2 py-1 rounded-full  font-normal text-gray-100 mb-2">
+                        Day 03
+                      </p>
+                      <h1 className="text-white mb-2  w-full text-2xl font-bold">
+                        Pacuan Kuda
+                      </h1>
+                      <p className="text-lg font-normal text-gray-100">
+                        2023 Padar island
+                      </p>
+                    </div>
+                    <div className="w-full">
+                      <p className="text-gray-300 text-base font-medium">
+                        Pacuan Kuda is a horse racing event that takes place in
+                        Indonesia. It is a popular sport in the country,
+                        attracting many spectators and participants.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </SwiperSlide>
+            <SwiperSlide className=" place-items-center shadow-none">
+              {({ isActive }) => (
+                <div
+                  className={`h-[350px] w-[500px] md:w-[700px] md:h-[450px]  overflow-hidden relative bg-secondary after:absolute after:w-full after:h-[80%] after:bg-gradient-to-t ${
+                    !isActive && "after:hidden"
+                  }  after:from-[#000] after:to-[#00000020] after:blur  after:-bottom-5`}
+                >
+                  {isActive && (
+                    <img
+                      src="https://images.unsplash.com/photo-1720553751739-36b6b8cb8c12?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGJpY3ljbGUlMjB0b3VyfGVufDB8fDB8fHww"
+                      className="w-full h-full object-cover"
+                      alt=""
+                    />
+                  )}
+                  {!isActive && (
+                    <div className="absolute top-4 left-4 h-16 w-16 flex justify-center items-center border-2 border-gray-300 rounded-full">
+                      <p className="text-4xl text-gray-300 font-medium">01</p>
+                    </div>
+                  )}
+                  <div className="absolute bottom-8 gap-2 flex justify-between left-8  z-[999]">
+                    <div className="w-full">
+                      <p className="text-base bg-primary w-fit px-2 py-1 rounded-full  font-normal text-gray-100 mb-2">
+                        Day 03
+                      </p>
+                      <h1 className="text-white mb-2  w-full text-2xl font-bold">
+                        Pacuan Kuda
+                      </h1>
+                      <p className="text-lg font-normal text-gray-100">
+                        2023 Padar island
+                      </p>
+                    </div>
+                    <div className="w-full">
+                      <p className="text-gray-300 text-base font-medium">
+                        Pacuan Kuda is a horse racing event that takes place in
+                        Indonesia. It is a popular sport in the country,
+                        attracting many spectators and participants.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </SwiperSlide>
+
+            <SwiperSlide className=" place-items-center shadow-none">
+              {({ isActive }) => (
+                <div
+                  className={`h-[350px] w-[500px] md:w-[700px] md:h-[450px]  overflow-hidden relative bg-secondary after:absolute after:w-full after:h-[80%] after:bg-gradient-to-t ${
+                    !isActive && "after:hidden"
+                  }  after:from-[#000] after:to-[#00000020] after:blur  after:-bottom-5`}
+                >
+                  {isActive && (
+                    <img
+                      src="https://images.unsplash.com/photo-1688977431265-681bd2e0615c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGJpY3ljbGUlMjB0b3VyfGVufDB8fDB8fHww"
+                      className="w-full h-full object-cover"
+                      alt=""
+                    />
+                  )}
+                  {!isActive && (
+                    <div className="absolute top-4 left-4 h-16 w-16 flex justify-center items-center border-2 border-gray-300 rounded-full">
+                      <p className="text-4xl text-gray-300 font-medium">01</p>
+                    </div>
+                  )}
+                  <div className="absolute bottom-8 gap-2 flex justify-between left-8  z-[999]">
+                    <div className="w-full">
+                      <p className="text-base bg-primary w-fit px-2 py-1 rounded-full  font-normal text-gray-100 mb-2">
+                        Day 03
+                      </p>
+                      <h1 className="text-white mb-2  w-full text-2xl font-bold">
+                        Pacuan Kuda
+                      </h1>
+                      <p className="text-lg font-normal text-gray-100">
+                        2023 Padar island
+                      </p>
+                    </div>
+                    <div className="w-full">
+                      <p className="text-gray-300 text-base font-medium">
+                        Pacuan Kuda is a horse racing event that takes place in
+                        Indonesia. It is a popular sport in the country,
+                        attracting many spectators and participants.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </SwiperSlide>
+
+            <SwiperSlide className=" place-items-center shadow-none">
+              {({ isActive }) => (
+                <div
+                  className={`h-[350px] w-[500px] md:w-[700px] md:h-[450px]  overflow-hidden relative bg-secondary after:absolute after:w-full after:h-[80%] after:bg-gradient-to-t ${
+                    !isActive && "after:hidden"
+                  }  after:from-[#000] after:to-[#00000020] after:blur  after:-bottom-5`}
+                >
+                  {isActive && (
+                    <img
+                      src="https://media.istockphoto.com/id/1133672137/photo/group-of-athletes-mountain-biking-on-forest-trail.webp?a=1&b=1&s=612x612&w=0&k=20&c=3_TNwDpG303J29rdVprwt-3mnQU-MYxUpK-cKQz-dP4="
+                      className="w-full h-full object-cover"
+                      alt=""
+                    />
+                  )}
+                  {!isActive && (
+                    <div className="absolute top-4 left-4 h-16 w-16 flex justify-center items-center border-2 border-gray-300 rounded-full">
+                      <p className="text-4xl text-gray-300 font-medium">01</p>
+                    </div>
+                  )}
+                  <div className="absolute bottom-8 gap-2 flex justify-between left-8  z-[999]">
+                    <div className="w-full">
+                      <p className="text-base bg-primary w-fit px-2 py-1 rounded-full  font-normal text-gray-100 mb-2">
+                        Day 03
+                      </p>
+                      <h1 className="text-white mb-2  w-full text-2xl font-bold">
+                        Pacuan Kuda
+                      </h1>
+                      <p className="text-lg font-normal text-gray-100">
+                        2023 Padar island
+                      </p>
+                    </div>
+                    <div className="w-full">
+                      <p className="text-gray-300 text-base font-medium">
+                        Pacuan Kuda is a horse racing event that takes place in
+                        Indonesia. It is a popular sport in the country,
+                        attracting many spectators and participants.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </SwiperSlide>
+
+            <SwiperSlide className=" place-items-center shadow-none">
+              {({ isActive }) => (
+                <div
+                  className={`h-[350px] w-[500px] md:w-[700px] md:h-[450px]  overflow-hidden relative bg-secondary after:absolute after:w-full after:h-[80%] after:bg-gradient-to-t ${
+                    !isActive && "after:hidden"
+                  }  after:from-[#000] after:to-[#00000020] after:blur  after:-bottom-5`}
+                >
+                  {isActive && (
+                    <img
+                      src="https://media.istockphoto.com/id/470167712/photo/hes-enjoying-the-ride.webp?a=1&b=1&s=612x612&w=0&k=20&c=lWUUNEO-IcQYt8kbLhTtW7-b7_FWFaDv1QN6XFbioqI="
+                      className="w-full h-full object-cover"
+                      alt=""
+                    />
+                  )}
+                  {!isActive && (
+                    <div className="absolute top-4 left-4 h-16 w-16 flex justify-center items-center border-2 border-gray-300 rounded-full">
+                      <p className="text-4xl text-gray-300 font-medium">01</p>
+                    </div>
+                  )}
+                  <div className="absolute bottom-8 gap-2 flex justify-between left-8  z-[999]">
+                    <div className="w-full">
+                      <p className="text-base bg-primary w-fit px-2 py-1 rounded-full  font-normal text-gray-100 mb-2">
+                        Day 03
+                      </p>
+                      <h1 className="text-white mb-2  w-full text-2xl font-bold">
+                        Pacuan Kuda
+                      </h1>
+                      <p className="text-lg font-normal text-gray-100">
+                        2023 Padar island
+                      </p>
+                    </div>
+                    <div className="w-full">
+                      <p className="text-gray-300 text-base font-medium">
+                        Pacuan Kuda is a horse racing event that takes place in
+                        Indonesia. It is a popular sport in the country,
+                        attracting many spectators and participants.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </SwiperSlide>
+
+            <SwiperSlide className=" place-items-center shadow-none">
+              {({ isActive }) => (
+                <div
+                  className={`h-[350px] w-[500px] md:w-[700px] md:h-[450px]  overflow-hidden relative bg-secondary after:absolute after:w-full after:h-[80%] after:bg-gradient-to-t ${
+                    !isActive && "after:hidden"
+                  }  after:from-[#000] after:to-[#00000020] after:blur  after:-bottom-5`}
+                >
+                  {isActive && (
+                    <img
+                      src="https://media.istockphoto.com/id/102285244/photo/racing-cyclists-on-road.webp?a=1&b=1&s=612x612&w=0&k=20&c=SeTBqUtRS7_yDHHg0yT8x0TjGyESNmpF4K24bDYM7qI="
+                      className="w-full h-full object-cover"
+                      alt=""
+                    />
+                  )}
+                  {!isActive && (
+                    <div className="absolute top-4 left-4 h-16 w-16 flex justify-center items-center border-2 border-gray-300 rounded-full">
+                      <p className="text-4xl text-gray-300 font-medium">01</p>
+                    </div>
+                  )}
+                  <div className="absolute bottom-8 gap-2 flex justify-between left-8  z-[999]">
+                    <div className="w-full">
+                      <p className="text-base bg-primary w-fit px-2 py-1 rounded-full  font-normal text-gray-100 mb-2">
+                        Day 03
+                      </p>
+                      <h1 className="text-white mb-2  w-full text-2xl font-bold">
+                        Pacuan Kuda
+                      </h1>
+                      <p className="text-lg font-normal text-gray-100">
+                        2023 Padar island
+                      </p>
+                    </div>
+                    <div className="w-full">
+                      <p className="text-gray-300 text-base font-medium">
+                        Pacuan Kuda is a horse racing event that takes place in
+                        Indonesia. It is a popular sport in the country,
+                        attracting many spectators and participants.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </SwiperSlide>
+
+            <SwiperSlide className=" place-items-center shadow-none">
+              {({ isActive }) => (
+                <div
+                  className={`h-[350px] w-[500px] md:w-[700px] md:h-[450px]  overflow-hidden relative bg-secondary after:absolute after:w-full after:h-[80%] after:bg-gradient-to-t ${
+                    !isActive && "after:hidden"
+                  }  after:from-[#000] after:to-[#00000020] after:  after:-bottom-5`}
+                >
+                  {isActive && (
+                    <img
+                      src="https://media.istockphoto.com/id/1135508703/photo/cycling-race.jpg?s=612x612&w=0&k=20&c=DiKukVOyvLGwLAzbVtl_yFsAP_ANfikclENIv24u3n8="
+                      className="w-full h-full object-cover"
+                      alt=""
+                    />
+                  )}
+                  {!isActive && (
+                    <div className="absolute top-4 left-4 h-16 w-16 flex justify-center items-center border-2 border-gray-300 rounded-full">
+                      <p className="text-4xl text-gray-300 font-medium">01</p>
+                    </div>
+                  )}
+                  <div className="absolute bottom-8 gap-2 flex justify-between left-8  z-[999]">
+                    <div className="w-full">
+                      <p className="text-base bg-primary w-fit px-2 py-1 rounded-full  font-normal text-gray-100 mb-2">
+                        Day 03
+                      </p>
+                      <h1 className="text-white mb-2  w-full text-2xl font-bold">
+                        Pacuan Kuda
+                      </h1>
+                      <p className="text-lg font-normal text-gray-100">
+                        2023 Padar island
+                      </p>
+                    </div>
+                    <div className="w-full">
+                      <p className="text-gray-300 text-base font-medium">
+                        Pacuan Kuda is a horse racing event that takes place in
+                        Indonesia. It is a popular sport in the country,
+                        attracting many spectators and participants.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </section>
+
+      <section className="container">
+        <h1>Flower GAllery</h1>
+        <Swiper
+          effect={"coverflow"}
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView={3}
+          loop={true}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 2.5,
+          }}
+          // pagination={true}
+          modules={[EffectCoverflow, Pagination, Navigation]}
+          // modules={[EffectCoverflow, Pagination, Navigation]}
+          className="mySwiper bg-red-600"
+        >
+          <SwiperSlide>
+            <img src="./assets/images/feature_1.png" alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="./assets/images/feature_2.png" alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="./assets/images/feature_1.png" alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="./assets/images/feature_1.png" alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="./assets/images/feature_1.png" alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="./assets/images/feature_1.png" alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src="./assets/images/feature_1.png" alt="" />
+          </SwiperSlide>
+        </Swiper>
       </section>
 
       <CTA />
