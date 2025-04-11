@@ -3,14 +3,16 @@ import Button from "./Button";
 function Tour({ duration, name, description, bg }) {
   return (
     <div
-      className={`w-full flex flex-col gap-6 md:flex-row md:justify-between py-24 px-8 md:py-24 ${bg}`}
+      className={`w-full flex flex-col gap-6 md:flex-row md:justify-between py-24 xxs:px-2 md:px-8 md:py-24 ${bg}`}
     >
       <div className="flex flex-col gap-4 justify-center md:w-1/2">
         <div className="flex flex-col gap-2">
           <p className={`text-base  ${bg ? "text-gray-100" : "text-gray-500"}`}>
             {duration}
           </p>
-          <h1 className="text-3xl md:text-4xl font-semibold w-1/2">{name}</h1>
+          <h1 className="text-3xl md:text-4xl font-semibold w-full md:w-1/2">
+            {name}
+          </h1>
         </div>
       </div>
       <div className="md:w-1/2">

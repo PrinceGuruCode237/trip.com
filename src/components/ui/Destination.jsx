@@ -13,8 +13,8 @@ function Destination({
     >
       <div className="flex flex-col">
         <div className="flex flex-col gap-4 w-fit">
-          <h1 className="text-3xl md:text-4xl font-semibold ">{title}</h1>
-          <p className="text-base font-normal w-2/3 inline md:text-lg">
+          <h1 className="text-3xl md:text-4xl font-semibold w-full">{title}</h1>
+          <p className="text-base font-normal w-full sm:w-2/3 inline md:text-lg">
             {description}
           </p>
         </div>
@@ -23,7 +23,7 @@ function Destination({
           <Button title="Read more" outline={true} />
         </div>
       </div>
-      <div className="w-full md:w-[100%] h-[500px]">
+      <div className="w-full md:w-[100%] h-[200px] sm:h-[500px] xs:h-[400px] ">
         <img
           src={src}
           alt=""

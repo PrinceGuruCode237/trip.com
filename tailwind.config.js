@@ -11,17 +11,20 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
-      screens: {},
+      screens: {
+        xxs: "320px",
+        xs: "420px",
+      },
       colors: {
         primary: "#6EBB2D",
-        secondary:"#1C2534",
-        secondary_80:"#253041",
+        secondary: "#1C2534",
+        secondary_80: "#253041",
         lightgray: "#F7F7F7",
         lightgreen: "#C7F2AB",
         green_500: "#A3DC2F",
         neutral: {
           gray_500: "#A7A7A7",
-          gray_400:"#656565",
+          gray_400: "#656565",
           black_500: "#1E1F20",
         },
       },

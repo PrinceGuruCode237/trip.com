@@ -2,7 +2,7 @@ import Tour from "../ui/Tour";
 
 function Tours() {
   return (
-    <section className="tours mx-4 md:mx-14" id="tours">
+    <section className="tours xxs:mx-4 xs:mx-6 md:mx-14" id="tours">
       <div className="py-4 border-b border-neutral-gray_300">
         <h3 className="text-lg font-medium text-neutral-black_500">
           Upcoming Tour 2023

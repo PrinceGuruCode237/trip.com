@@ -13,23 +13,23 @@ function Slides() {
   const [activeIndex, setActiveIndex] = useState(0);
   const { width } = useWindowSize();
   return (
-    <section className="px-6 md:px-14 py-24 min-h-[200vh] bg-secondary">
-      <div className="flex items-start">
-        <div className="flex flex-col gap-4 justify-center">
-          <div className="flex flex-col gap-2">
+    <section className="xxs:px-4 xs:px-6  md:px-14 py-24 min-h-[200vh] bg-secondary">
+      <div className="flex items-start w-full">
+        <div className="flex flex-col gap-4 justify-center w-full">
+          <div className="flex flex-col gap-2 w-full">
             <p className={`text-base text-gray-100`}>04 days 03 Nights</p>
-            <h1 className="text-4xl md:text-5xl font-bold w-1/2 text-white">
+            <h1 className="xs:text-4xl xxs:text-2xl md:text-5xl font-bold xxs:w-full md:w-1/2 text-white">
               Journey to Padar Island
             </h1>
           </div>
-          <p className={`text-base md:text-base text-gray-300`}>
+          <div className={`text-base block md:text-lg w-full  text-gray-300`}>
             If you have never visited Padar island I suggest you go here, it
             will be a life time experience that Padar island, Then it is
             recommended that you book.
-          </p>
+          </div>
         </div>
 
-        <div className="flex gap-4 items-center">
+        <div className="gap-4 items-center hidden sm:flex">
           <div
             className={`prev relative w-10 cursor-pointer`}
             // onClick={goToPrevSlide}
@@ -136,7 +136,7 @@ function Slides() {
           <SwiperSlide className=" place-items-center shadow-none">
             {({ isActive }) => (
               <div
-                className={`h-[350px] w-[500px] md:w-[700px] md:h-[450px]  overflow-hidden relative bg-secondary after:absolute after:w-full after:h-[80%] after:bg-gradient-to-t ${
+                className={`h-[350px] w-[550px] md:w-[700px] md:h-[450px]  overflow-hidden relative bg-secondary after:absolute after:w-full after:h-[80%] after:bg-gradient-to-t ${
                   !isActive && "after:hidden"
                 }  after:from-[#000] after:to-[#00000020] after:blur  after:-bottom-5`}
               >
@@ -152,8 +152,8 @@ function Slides() {
                     <p className="text-4xl text-gray-300 font-medium">01</p>
                   </div>
                 )}
-                <div className="absolute bottom-8 gap-2 flex justify-between left-8  z-[999]">
-                  <div className="w-full">
+                <div className="absolute w-[270px] md:w-full bottom-8 gap-2 flex justify-between left-[25%]  mx-auto  xxs:flex-col md:flex-row md:left-8  z-[999]">
+                  <div className="">
                     <p className="text-base bg-primary w-fit px-2 py-1 rounded-full  font-normal text-gray-100 mb-2">
                       Day 03
                     </p>
@@ -164,8 +164,8 @@ function Slides() {
                       2023 Padar island
                     </p>
                   </div>
-                  <div className="w-full">
-                    <p className="text-gray-300 text-base font-medium">
+                  <div className="">
+                    <p className="text-gray-300 text-base xxs:text-sm font-medium">
                       Pacuan Kuda is a horse racing event that takes place in
                       Indonesia. It is a popular sport in the country,
                       attracting many spectators and participants.
@@ -444,7 +444,10 @@ function Slides() {
         />
         <Swiper
           grabCursor={true}
-          spaceBetween={width > 780 ? -150 : 150}
+          // spaceBetween={
+          //   width < 780 ? 200 : width > 1024 ? -150 : width < 640 ? 200 : 200
+          // }
+          spaceBetween={width < 640 ? 150 : -150}
           slidesPerView={width > 780 ? 2.5 : 1.5}
           loop={true}
           className="mr-24"
